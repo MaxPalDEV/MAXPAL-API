@@ -4,6 +4,7 @@
  const bcrypt = require('bcrypt');
  const database = require('../../Config/database');
  const jwt = require('jsonwebtoken');
+ require('dotenv').config();
 
 /**
  * Requête d'inscription d'un utilisateur
@@ -50,7 +51,7 @@
                             user: row,
                             token: jwt.sign(
                                 { userInformations: row.id },
-                                'SecretToken',
+                                process.env.TOKEN,
                                 { expiresIn: '24h' }
                             )
                         });
