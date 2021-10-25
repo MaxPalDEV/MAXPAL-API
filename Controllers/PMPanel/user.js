@@ -46,7 +46,6 @@
                     if (!valid) {
                         return res.status(401).json({error: "Le mot de passe est incorrect..."});
                     }else{
-
                         res.status(200).json({
                             user: row,
                             token: jwt.sign(
@@ -55,6 +54,8 @@
                                 { expiresIn: '24h' }
                             )
                         });
+
+                        
                     }
                 })
                 .catch(error => res.status(500).json({ error }));

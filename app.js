@@ -14,6 +14,7 @@ const userRoutes = require('./Routes/PMPanel/user');
 const categoriesRoutes = require('./Routes/How2/categories');
 const sousCategoriesRoutes = require('./Routes/How2/sousCategories');
 const itemsRoutes = require('./Routes/How2/items');
+const portfolioRoutes = require('./Routes/CV/portfolio');
 
 const app = express();
 
@@ -64,5 +65,6 @@ app.use('/auth', userRoutes);
 app.use('/how2/categories', categoriesRoutes);
 app.use('/how2/subcategories', sousCategoriesRoutes);
 app.use('/how2/items', itemsRoutes);
+app.use('/webcv', portfolioRoutes);
 
 module.exports = app;
