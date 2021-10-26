@@ -11,7 +11,7 @@
  * @param {*} next 
  */
 exports.createSubCategorie = (req, res, next) => {
-    values = [[req.body.name, req.body.description, `${req.protocol}://${req.get('host')}/images/${req.file.filename}`, req.body.id]];
+    values = [[req.body.name, req.body.description, `https://${req.get('host')}/images/${req.file.filename}`, req.body.id]];
     database.query("INSERT INTO how2_subcategories (name, description, logo, categories_id) VALUES ?",[values], function (err, result) {
         if (err) throw err;
         console.log("Sous catégorie ajoutée !")
@@ -27,7 +27,7 @@ exports.createSubCategorie = (req, res, next) => {
  */
 exports.updateSubCategorie = (req, res, next) => {  
     if (req.file) {
-        values = [req.body.name, req.body.description, `${req.protocol}://${req.get('host')}/images/${req.file.filename}`, req.body.idCategorie, req.body.id];
+        values = [req.body.name, req.body.description, `https://${req.get('host')}/images/${req.file.filename}`, req.body.idCategorie, req.body.id];
     } else {
         values = [req.body.name, req.body.description, req.body.image, req.body.idCategorie, req.body.id];
     }     

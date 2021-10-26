@@ -12,7 +12,7 @@ const fs = require('fs'); // Permet de supprimer les images à la suppression d'
  */
 exports.createCategorie = (req, res, next) => {
     
-    values = [[req.body.name, req.body.description, `${req.protocol}://${req.get('host')}/images/${req.file.filename}`]];
+    values = [[req.body.name, req.body.description, `https://${req.get('host')}/images/${req.file.filename}`]];
     database.query("INSERT INTO how2_categories (name, description, logo) VALUES ?",[values], function (err, result) {
         if (err) throw err;
         console.log("Catégorie ajoutée !")
@@ -41,7 +41,7 @@ exports.createCategorie = (req, res, next) => {
  */
 exports.updateCategorie = (req, res, next) => {  
     if (req.file) {
-        values = [req.body.name, req.body.description, `${req.protocol}://${req.get('host')}/images/${req.file.filename}`, req.body.id];
+        values = [req.body.name, req.body.description, `https://${req.get('host')}/images/${req.file.filename}`, req.body.id];
     } else {
         values = [req.body.name, req.body.description, req.body.image, req.body.id];
     }     

@@ -12,7 +12,7 @@
  */
 exports.createPortfolio = (req, res, next) => {
     
-    values = [[req.body.name,`${req.protocol}://${req.get('host')}/images/${req.file.filename}`, req.body.technos, req.body.description]];
+    values = [[req.body.name,`https://${req.get('host')}/images/${req.file.filename}`, req.body.technos, req.body.description]];
     database.query("INSERT INTO webcv_portfolio (name, logo, technos, description) VALUES ?",[values], function (err, result) {
         if (err) throw err;
         console.log("Item de portfolio ajouté !")
@@ -29,7 +29,7 @@ exports.createPortfolio = (req, res, next) => {
  */
 exports.addImageToPortfolio = (req, res, next) => {
     
-    values = [[`${req.protocol}://${req.get('host')}/images/${req.file.filename}`, req.body.id]];
+    values = [[`https://${req.get('host')}/images/${req.file.filename}`, req.body.id]];
     database.query("INSERT INTO webcv_portfolioimage (url, portfolio_id) VALUES ?",[values], function (err, result) {
         if (err) throw err;
         console.log("image de portfolio ajouté !")
